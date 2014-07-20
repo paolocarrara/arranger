@@ -5,6 +5,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-char **arrange (int, char **, char *);
+void arrange_argv (int, char **, char *);
 
 #endif

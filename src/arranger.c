@@ -1,17 +1,25 @@
 #include "../inc/arranger.h"
 
-char **arrange (int argc, char **argv, char *argopt)
+void arrange_argv (int argc, char **argv, char *argopt)
 {
-	char **ordered_argv = NULL;
-	int i;
+	char opt;
+	int ndx, argopt_len;
+	int i, j;
 
-	ordered_argv = malloc ( argc*sizeof (char *) );
+	argopt_len = strlen (argopt);
 
-	ordered_argv[0] = malloc ( ( strlen ( argv[0])+1 )*sizeof(char) );
+	for (i = 0, ndx = 1; i < argopt_len; i++) {
+		opt = argopt[i];
+		for (j = 1; j < argc; j++) {
+			if (opt == argv[j][1]) {
+				char *aux;
+				aux = argv[ndx];
+				argv[ndx] = argv[j];
+				argv[j] = aux;
+				ndx++;
+				j = argc;
+			}
+		}
 
-	for (i = 0; i < argc; i++) {
-		ordered_argv[i] = malloc ( (strlen(argv[i])+1)*sizeof (char) );
 	}
-
-	return ordered_argv;
 }
