@@ -23,3 +23,19 @@ void arrange_argv (int argc, char **argv, char *argopt)
 
 	}
 }
+
+char *get_optarg (int argc, char **argv, char opt)
+{
+	char *opt_p = NULL;
+	int i;
+
+	for (i = 0; i < argc; i++) {
+		if (opt == argv[i][1]) {
+			opt_p = malloc ( (strlen (argv[i])-1) * sizeof (char) );
+			memcpy (opt_p, argv[i]+2, strlen (argv[i])-1);
+			i = argc;
+		}
+	}
+
+	return opt_p;
+}

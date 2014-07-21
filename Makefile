@@ -20,9 +20,9 @@ test: test1 test2 test3
 test1:
 	valgrind ./arranger -l3 -c[a-Z] -k[1,g]
 test2:
-	./arranger -l3
+	valgrind ./arranger -l3
 test3:
-	./arranger -l3 -c[a-z]
+	valgrind ./arranger -l3 -c[a-z]
 
 
 clean:
